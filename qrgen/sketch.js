@@ -1,13 +1,20 @@
 let qrData;
+let urlInput;
+let colorInput;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, 400);
 
-  qrData=qr.encodeQR('https://google.com')
+  urlInput=select('#url')
+
+  colorInput=select('#color')
+
 
 console.log(qrData)
 }
-
+ function windowResized(){
+  resizeCanvas(windowWidth,400)
+ }
 
 function draw() {
   background(220);
@@ -16,7 +23,12 @@ function draw() {
 
    let gap=10;
 
-   fill(50,20,40)
+   //セルの色
+   fill(colorInput.value())
+
+  qrData=qr.encodeQR(urlInput.value())
+
+
 
    //配列のスキャン
    for(let y =0;y<qrData.length;y++){
@@ -26,9 +38,12 @@ function draw() {
     let cell = row[x];//1マスの黒かしろか
 
     if (cell){
-      circle(x*gap,y*gap,gap)
+      rect(x*gap,y*gap,gap)
     }
    }
   }
+
+  textSize(20)
+  text(urlInput.value(),40,350)
 }
 
