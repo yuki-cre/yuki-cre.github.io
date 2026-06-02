@@ -879,7 +879,7 @@
                       'type': 'Number'
                     },
                     {
-                      'name': 'y2',
+                      'name': 'y2', 
                       'description': '<p>the y-coordinate of the second point.</p>\n',
                       'type': 'Number'
                     }
