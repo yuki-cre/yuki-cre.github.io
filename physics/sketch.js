@@ -117,7 +117,7 @@ function draw() {
     // タイトル画面だったら
     textAlign(CENTER);
     textSize(30);
-    text("Suika Game 2", width / 2, height / 2);
+    text("Fruit game", width / 2, height / 2);
 
   } else if (scene == "play") {
 
@@ -183,6 +183,25 @@ text(nextFruit, width - 100, 90);
     // 世界の更新（1 フレーム時間を進める）
     Engine.update(engine, 15);
 
+  }else if (scene == "gameover") {
+
+
+    // 半透明の黒
+    fill(0, 0, 0, 180);
+    noStroke();
+    rect(0, 0, width, height);
+
+    // GAME OVER
+    textAlign(CENTER, CENTER);
+
+    fill(255, 60, 60);
+    textSize(60);
+    text("GAME OVER", width / 2, height / 2 - 40);
+
+    fill(255);
+    textSize(24);
+    text("Click to Restart", width / 2, height / 2 + 30);
+
   }
 
 
@@ -214,7 +233,9 @@ function mousePressed() {
     nextFruit = random(fruitTypes);
 }
 
-  }
+  }else if (scene == "gameover") {
+    location.reload();
+}
 
 }
 
